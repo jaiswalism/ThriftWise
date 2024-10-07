@@ -72,3 +72,4 @@ ThriftWise/
 ---
 
 Feel free to contribute to the project by creating a pull request or raising an issue!
+
