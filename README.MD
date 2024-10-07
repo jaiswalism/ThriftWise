@@ -61,6 +61,7 @@ ThriftWise/
 │   │       └── WalletAppUI.java     # User Interface built with Swing
 ├── .gitignore                       # Ignore file for unnecessary files
 └── README.md                        # Project description
+```
 
 ## Future Improvements
 
