@@ -47,18 +47,24 @@ public class HomeWindow extends JFrame {
     private JPanel createSelectionPanel() {
         JPanel selectionPanel = new JPanel();
         selectionPanel.setLayout(new BoxLayout(selectionPanel, BoxLayout.X_AXIS));
-
+    
         JButton newButton = new JButton("+NEW");
         newButton.addActionListener(new MyActionListener());
-
+    
         JComboBox<String> categoriesBox;
         categoriesBox = createSortPanel();
-
+    
         JButton calculateButton = new JButton("Summary");
         calculateButton.addActionListener(new MyActionListener());
+    
+        // New Show Graph button
+        JButton showGraphButton = new JButton("Show Graph");
+        showGraphButton.addActionListener(new MyActionListener());  // Action listener to show the graph
+    
         JPanel totalPanel = new JPanel();
         totalPanel.add(label);
-
+    
+        // Add the components with spacing between them
         selectionPanel.add(Box.createRigidArea(new Dimension(20, 0)));
         selectionPanel.add(newButton);
         selectionPanel.add(Box.createRigidArea(new Dimension(20, 0)));
@@ -67,12 +73,17 @@ public class HomeWindow extends JFrame {
         selectionPanel.add(categoriesBox);
         selectionPanel.add(Box.createRigidArea(new Dimension(20, 0)));
         selectionPanel.add(totalPanel);
-        selectionPanel.add(Box.createRigidArea(new Dimension(490, 0)));
+        selectionPanel.add(Box.createRigidArea(new Dimension(20, 0)));
         selectionPanel.add(calculateButton);
         selectionPanel.add(Box.createRigidArea(new Dimension(20, 0)));
+    
+        // Add the Show Graph button to the panel
+        selectionPanel.add(showGraphButton);
+        selectionPanel.add(Box.createRigidArea(new Dimension(20, 0)));
+    
         selectionPanel.setPreferredSize(new Dimension(1000, 30));
         return selectionPanel;
-    }
+    } 
 
     private JComboBox<String> createSortPanel() {
 //        JPanel sortPanel = new JPane
