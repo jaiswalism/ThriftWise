@@ -18,16 +18,24 @@ ThriftWise is a Java application that allows you to track and manage your expens
 
 ## Features
 
-- Add new expenses
-- Sort expenses based on categories
-- Provides a summary of total expenses
-- Visual representation of expenses using pie charts (new feature)
+- **Add New Expenses**: Add expenses with details such as name, description, amount, date, and category.
+- **Delete Expenses**: Delete expenses directly from the table based on their unique ID.
+- **Calendar Date Picker**: Use a calendar to select the expense date instead of typing it manually.
+- **Sort Expenses**: Sort expenses based on categories.
+- **Expense Summary**: View a summary of total expenses in each category.
+- **Expense Graph**: Visualize expenses in a pie chart for better insights into spending patterns.
+
+## Technologies Used
+
+- **Java Swing**: For the graphical user interface.
+- **FlatLaf**: A modern, sleek look and feel for the application.
+- **SQLite**: Lightweight database for storing expenses.
+- **JFreeChart**: For generating the expense summary pie chart.
 
 ## Future Developments
 
-- Implement delete functionality for expenses
-- Further improvements in expense visualizations
-- Exporting expense data as CSV/Excel files
+- **Export Data**: Allow exporting expense data to CSV or Excel files.
+- **Improved Visualizations**: More graph types for analyzing spending trends.
 
 ## Prerequisites
 

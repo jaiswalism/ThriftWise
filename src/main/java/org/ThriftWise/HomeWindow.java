@@ -78,7 +78,7 @@ public class HomeWindow extends JFrame {
         selectionPanel.add(categoriesBox);
         selectionPanel.add(Box.createRigidArea(new Dimension(20, 0)));
         selectionPanel.add(totalPanel);
-        selectionPanel.add(Box.createRigidArea(new Dimension(300, 0)));
+        selectionPanel.add(Box.createRigidArea(new Dimension(250, 0)));
         selectionPanel.add(calculateButton);
         selectionPanel.add(Box.createRigidArea(new Dimension(20, 0)));
 
