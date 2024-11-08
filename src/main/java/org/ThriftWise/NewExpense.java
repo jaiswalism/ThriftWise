@@ -1,8 +1,11 @@
 package org.ThriftWise;
 
+import com.toedter.calendar.JDateChooser;
 import javax.swing.*;
 import java.awt.*;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class NewExpense {
     public NewExpense() {
@@ -24,9 +27,10 @@ public class NewExpense {
         JTextField amountField = new JTextField();
         frame.add(amountField);
 
-        frame.add(new JLabel("Date(YYYY-MM-DD):"));
-        JTextField dateField = new JTextField();
-        frame.add(dateField);
+        frame.add(new JLabel("Date:"));
+        JDateChooser dateChooser = new JDateChooser();
+        dateChooser.setDateFormatString("dd-MM-yyyy");
+        frame.add(dateChooser);
 
         frame.add(new JLabel("Category:"));
         String[] categoryList = ExpenseDB.getCategories();
@@ -38,15 +42,25 @@ public class NewExpense {
             String name = nameField.getText();
             String description = descriptionField.getText();
             int amount = Integer.parseInt(amountField.getText());
-            String date = dateField.getText();
-            String category = (String) categoryField.getSelectedItem();
-            frame.dispose();
-            ExpenseDB.insertExpenses(name, description, amount, category, date);
-            try {
-                HomeWindow.updateTable();
-                HomeWindow.updateTotal();
-            } catch (SQLException ex) {
-                throw new RuntimeException(ex);
+            Date selectedDate = dateChooser.getDate();  // Get the selected date
+
+            // Check if date is selected
+            if (selectedDate != null) {
+                // Format the Date object into a String (dd-MM-yyyy)
+                String formattedDate = new SimpleDateFormat("dd-MM-yyyy").format(selectedDate);
+
+                String category = (String) categoryField.getSelectedItem();
+                frame.dispose();
+                ExpenseDB.insertExpenses(name, description, amount, category, formattedDate);  // Pass formatted date as String
+
+                try {
+                    HomeWindow.updateTable();
+                    HomeWindow.updateTotal();
+                } catch (SQLException ex) {
+                    throw new RuntimeException(ex);
+                }
+            } else {
+                JOptionPane.showMessageDialog(frame, "Please select a valid date.", "Error", JOptionPane.ERROR_MESSAGE);
             }
         });
         frame.add(submitButton);

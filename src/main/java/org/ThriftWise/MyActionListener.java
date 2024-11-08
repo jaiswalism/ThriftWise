@@ -85,7 +85,7 @@ public void actionPerformed(ActionEvent e) {
             JFreeChart chart = ChartFactory.createPieChart(
                     "Expense Summary",    // Title of the chart
                     dataset,              // Data
-                    true,                 // Include legend
+                    true,                 // Include legend/labels
                     true,                 // Tooltips
                     false                 // URLs (disabled)
             );
@@ -137,6 +137,26 @@ public void actionPerformed(ActionEvent e) {
             chartFrame.pack();
             chartFrame.setVisible(true);
         }
+
+        if (e.getActionCommand().equals("Delete")) { 
+            String idToDelete = JOptionPane.showInputDialog(null, "Enter the ID of the expense to delete:");
+            if (idToDelete != null && !idToDelete.trim().isEmpty()) {
+                try {
+                    int id = Integer.parseInt(idToDelete.trim());
+                    boolean success = ExpenseDB.deleteExpenseById(id);
+                    if (success) {
+                        JOptionPane.showMessageDialog(null, "Expense deleted successfully.", "Success", JOptionPane.INFORMATION_MESSAGE);
+                        HomeWindow.updateTable();
+                        HomeWindow.updateTotal();
+                    } else {
+                        JOptionPane.showMessageDialog(null, "Expense ID not found.", "Error", JOptionPane.ERROR_MESSAGE);
+                    }
+                } catch (NumberFormatException ex) {
+                    JOptionPane.showMessageDialog(null, "Invalid ID. Please enter a valid number.", "Error", JOptionPane.ERROR_MESSAGE);
+                } catch (SQLException ex) {
+                    throw new RuntimeException(ex);
+                }
+            }}
     }
 
     if (e.getSource() instanceof JComboBox) {

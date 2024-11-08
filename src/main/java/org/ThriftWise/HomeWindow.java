@@ -50,6 +50,9 @@ public class HomeWindow extends JFrame {
     
         JButton newButton = new JButton("+NEW");
         newButton.addActionListener(new MyActionListener());
+
+        JButton deleteButton = new JButton("Delete"); 
+        deleteButton.addActionListener(new MyActionListener());
     
         JComboBox<String> categoriesBox;
         categoriesBox = createSortPanel();
@@ -68,15 +71,17 @@ public class HomeWindow extends JFrame {
         selectionPanel.add(Box.createRigidArea(new Dimension(20, 0)));
         selectionPanel.add(newButton);
         selectionPanel.add(Box.createRigidArea(new Dimension(20, 0)));
+        selectionPanel.add(deleteButton);
+        selectionPanel.add(Box.createRigidArea(new Dimension(20, 0)));
         selectionPanel.add(new JLabel("Sort:"));
         selectionPanel.add(Box.createRigidArea(new Dimension(3, 0)));
         selectionPanel.add(categoriesBox);
         selectionPanel.add(Box.createRigidArea(new Dimension(20, 0)));
         selectionPanel.add(totalPanel);
-        selectionPanel.add(Box.createRigidArea(new Dimension(20, 0)));
+        selectionPanel.add(Box.createRigidArea(new Dimension(300, 0)));
         selectionPanel.add(calculateButton);
         selectionPanel.add(Box.createRigidArea(new Dimension(20, 0)));
-    
+
         // Add the Show Graph button to the panel
         selectionPanel.add(showGraphButton);
         selectionPanel.add(Box.createRigidArea(new Dimension(20, 0)));

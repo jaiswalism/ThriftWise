@@ -1,5 +1,6 @@
 package org.ThriftWise;
 
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -13,7 +14,7 @@ public class ExpenseDB {
             stat = ConnectDB.connect().createStatement();
             stat.executeUpdate("""
                     CREATE TABLE IF NOT EXISTS Expenses (
-                       ID INT PRIMARY KEY,
+                       ID INTEGER PRIMARY KEY AUTOINCREMENT,
                        Name VARCHAR(100),
                        Description VARCHAR(255),
                        Amount DECIMAL(10, 2),
@@ -49,9 +50,9 @@ public class ExpenseDB {
     public static ResultSet getALL() throws SQLException {
         String selectSQL;
         if (HomeWindow.getSort().equals("All")) {
-            selectSQL = "SELECT Name, Description, Amount, Category, Date FROM \"expenses\"";
+            selectSQL = "SELECT ID, Name, Description, Amount, Category, Date FROM \"expenses\"";
         } else {
-            selectSQL = "SELECT Name, Description, Amount, Category, Date FROM \"expenses\" WHERE Category LIKE '" + HomeWindow.getSort() + "'";
+            selectSQL = "SELECT ID, Name, Description, Amount, Category, Date FROM \"expenses\" WHERE Category LIKE '" + HomeWindow.getSort() + "'";
         }
         return stat.executeQuery(selectSQL);
 
@@ -90,6 +91,16 @@ public class ExpenseDB {
         }
         System.out.println("inserted!");
     }
+
+    public static boolean deleteExpenseById(int id) throws SQLException {
+    String deleteSQL = "DELETE FROM Expenses WHERE ID = ?";
+    try (PreparedStatement pstmt = ConnectDB.connect().prepareStatement(deleteSQL)) {
+        pstmt.setInt(1, id);
+        int rowsAffected = pstmt.executeUpdate();
+        System.out.println("deleted!");
+        return rowsAffected > 0;
+    }
+}
 
     public static String totalExpenses() {
         String selectSQL;
