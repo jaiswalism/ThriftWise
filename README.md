@@ -5,7 +5,7 @@ ThriftWise is a Java application that allows you to track and manage your expens
 ## Screenshots
 
 ### Main Screen
-![Main Screen](./img/main.png)
+![Main Screen](./img/_main.png)
 
 ### Categories
 ![Categories](./img/categories.png)
