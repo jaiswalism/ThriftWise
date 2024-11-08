@@ -90,6 +90,7 @@ public void actionPerformed(ActionEvent e) {
                     false                 // URLs (disabled)
             );
 
+            @SuppressWarnings("unchecked")
             PiePlot<String> plot = (PiePlot<String>) chart.getPlot();
             plot.setLabelGenerator(new StandardPieSectionLabelGenerator("{0}: {1} ({2})"));
 
@@ -108,6 +109,7 @@ public void actionPerformed(ActionEvent e) {
             // Custom PieToolTipGenerator to format the tooltip text
             PieToolTipGenerator toolTipGenerator = (dataset1, key) -> {
                 if (key != null) {
+                    @SuppressWarnings("unchecked")
                     double value = dataset1.getValue(key).doubleValue();
                     double percentage = (totalExpenses[0] > 0) ? (value / totalExpenses[0]) * 100 : 0.0;
                     return key + ": " + value + " (" + String.format("%.2f", percentage) + "%)";

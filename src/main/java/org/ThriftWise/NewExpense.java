@@ -8,6 +8,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class NewExpense {
+    @SuppressWarnings("unused")
     public NewExpense() {
 
         JFrame frame = new JFrame("Input Details");
