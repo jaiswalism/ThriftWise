@@ -5,7 +5,7 @@ ThriftWise is a Java application that allows you to track and manage your expens
 ## Screenshots
 
 ### Main Screen
-![Main Screen](./img/_main.png)
+![Main Screen](./img/main.png)
 
 ### Categories
 ![Categories](./img/categories.png)
@@ -13,8 +13,14 @@ ThriftWise is a Java application that allows you to track and manage your expens
 ### Summary
 ![Summary](./img/summary.png)
 
+### Date Range
+![Date Range](./img/dateRange.png)
+
 ### Expense Summary with Graph
-![Expense Graph](./img/graph.png)
+![Expense Pie Graph](./img/graph.png)
+
+### Expense Summary with BarGraph
+![Expense Bar Graph](./img/barGraph.png)
 
 ## Features
 
@@ -23,14 +29,16 @@ ThriftWise is a Java application that allows you to track and manage your expens
 - **Calendar Date Picker**: Use a calendar to select the expense date instead of typing it manually.
 - **Sort Expenses**: Sort expenses based on categories.
 - **Expense Summary**: View a summary of total expenses in each category.
-- **Expense Graph**: Visualize expenses in a pie chart for better insights into spending patterns.
+- **Expense Graph**: Visualize expenses in a pie chart or bar chart for better insights into spending patterns.
+- **Date Range Filtering**: View transactions within a specific date range by selecting start and end dates.
 
 ## Technologies Used
 
 - **Java Swing**: For the graphical user interface.
 - **FlatLaf**: A modern, sleek look and feel for the application.
 - **SQLite**: Lightweight database for storing expenses.
-- **JFreeChart**: For generating the expense summary pie chart.
+- **JFreeChart**: For generating the expense summary pie chart and bar chart.
+- **JDateChooser**: For selecting date ranges.
 
 ## Future Developments
 

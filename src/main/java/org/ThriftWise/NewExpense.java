@@ -3,7 +3,6 @@ package org.ThriftWise;
 import com.toedter.calendar.JDateChooser;
 import javax.swing.*;
 import java.awt.*;
-import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -47,19 +46,15 @@ public class NewExpense {
 
             // Check if date is selected
             if (selectedDate != null) {
-                // Format the Date object into a String (dd-MM-yyyy)
-                String formattedDate = new SimpleDateFormat("dd-MM-yyyy").format(selectedDate);
+                // Format the Date object into a String (yyyy-MM-dd)
+                String formattedDate = new SimpleDateFormat("yyyy-MM-dd").format(selectedDate);
 
                 String category = (String) categoryField.getSelectedItem();
                 frame.dispose();
                 ExpenseDB.insertExpenses(name, description, amount, category, formattedDate);  // Pass formatted date as String
 
-                try {
-                    HomeWindow.updateTable();
-                    HomeWindow.updateTotal();
-                } catch (SQLException ex) {
-                    throw new RuntimeException(ex);
-                }
+                HomeWindow.updateTable();
+                HomeWindow.updateTotal();
             } else {
                 JOptionPane.showMessageDialog(frame, "Please select a valid date.", "Error", JOptionPane.ERROR_MESSAGE);
             }

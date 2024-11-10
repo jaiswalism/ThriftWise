@@ -4,6 +4,9 @@ target/
 # Ignore the SQLite database file
 *.db
 
+#Ignore temp backup directory
+.backup_db/
+
 # Ignore IDE specific files (optional)
 .idea/
 *.iml
